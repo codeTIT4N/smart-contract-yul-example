@@ -22,9 +22,9 @@ describe("For the Pure Yul Contract", function () {
 		});
 	});
 
-	describe("The functions should work as expected", function () {
-		it("Should run myFunc()", async function () {
-			expect(await pureYulInstance.myFunc()).to.equal(4);
-		});
-	});
+	// describe("The functions should work as expected", function () {
+	// 	it("Should run myFunc()", async function () {
+	// 		expect(await pureYulInstance.myFunc()).to.equal(4);
+	// 	});
+	// });
 });

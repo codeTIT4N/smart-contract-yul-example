@@ -10,22 +10,24 @@ const source = fs.readFileSync(inputPath, "utf-8");
 var input = {
     language: 'Yul',
     sources: {
-        'PureYul.sol' : {
+        'PureYul.sol': {
             content: source
         }
     },
     settings: {
         outputSelection: {
             '*': {
-                '*': [ "evm.bytecode" ]
+                '*': ["evm.bytecode"]
             }
-        }
+        },
+        "optimizer": { "enabled": true, "runs": 1, "details": { "yul": true } }
     }
 };
 
 const compiledContract = solc.compile(JSON.stringify(input));
+console.log(compiledContract);
 const bytecode = JSON.parse(compiledContract).contracts["PureYul.sol"].PureYul.evm.bytecode.object;
 
-fs.writeFile(outputPath, JSON.stringify(bytecode), (err) => {});
+fs.writeFile(outputPath, JSON.stringify(bytecode), (err) => { });
 
 console.log("done");
